@@ -11,7 +11,7 @@
 
 <a
 	href="/note/{note._id}"
-	class="card bg-base-100 hover:shadow-lg transition-all duration-200 border-t-4 border-solid border[#00FF9D]"
+	class="card bg-base-100 hover:shadow-lg transition-all duration-200 border-t-4 border-solid border-[#00FF9D]"
 >
 	<div class="card-body">
 		<h3 class="card-title text-base-content">{note.title}</h3>
@@ -20,13 +20,15 @@
 			<span class="text-sm text-base-content/60">
 				{formatDate(new Date(note.createdAt))}
 			</span>
-			<div class="flex items-center gap-1">Edit</div>
-			<button
-				class="btn btn-ghost btn-xs text-error"
-				onclick={(e) => {
-					handleDelete(e, note._id);
-				}}>Delete</button
-			>
+			<div class="flex items-center gap-1">
+				<p>Edit</p>
+				<button
+					class="btn btn-ghost btn-xs text-error"
+					onclick={(e) => {
+						handleDelete(e, note._id);
+					}}>Delete</button
+				>
+			</div>
 		</div>
 	</div>
 </a>
