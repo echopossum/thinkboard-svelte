@@ -4,7 +4,7 @@
 	let { note } = $props();
 
 	const handleDelete = async (e, id) => {
-		e.preventDefaults();
+		e.preventDefault();
 		if (!window.confirm('Are you sure you want to delete this note?')) return;
 	};
 </script>
