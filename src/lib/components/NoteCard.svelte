@@ -1,12 +1,15 @@
 <script>
 	import { formatDate } from '$lib/utils/utils';
+	import { enhance } from '$app/forms';
+	import { redirect } from '@sveltejs/kit';
+
+	const handleDelete = ({ cancel }) => {
+		if (!confirm('Are you sure?')) {
+			cancel();
+		}
+	};
 
 	let { note } = $props();
-
-	const handleDelete = async (e, id) => {
-		e.preventDefault();
-		if (!window.confirm('Are you sure you want to delete this note?')) return;
-	};
 </script>
 
 <a
@@ -22,12 +25,16 @@
 			</span>
 			<div class="flex items-center gap-1">
 				<p>Edit</p>
-				<button
-					class="btn btn-ghost btn-xs text-error"
-					onclick={(e) => {
-						handleDelete(e, note._id);
-					}}>Delete</button
-				>
+				<form method="POST" action="?/delete" use:enhance={handleDelete}>
+					<input type="hidden" name="id" value={note._id} />
+					<button
+						type="submit"
+						class="btn btn-ghost btn-xs text-error"
+						onclick={(e) => {
+							e.stopPropagation();
+						}}>Delete</button
+					>
+				</form>
 			</div>
 		</div>
 	</div>
