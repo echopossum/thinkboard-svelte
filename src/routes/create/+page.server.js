@@ -9,7 +9,6 @@ export const actions = {
 			const content = data.get('content');
 			const note = new Note({ title, content });
 			const savedNote = await note.save();
-			console.log('Redirecting');
 			throw redirect(303, '/');
 		} catch (error) {
 			if (error instanceof Response || error.status === 303) {

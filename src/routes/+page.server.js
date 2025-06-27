@@ -16,8 +16,6 @@ export const actions = {
 		try {
 			const deletedNote = await Note.findByIdAndDelete(id);
 			throw redirect(303, '/');
-		} catch (error) {
-			console.log('Component action error:', error);
-		}
+		} catch (error) {}
 	}
 };
