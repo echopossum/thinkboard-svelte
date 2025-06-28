@@ -15,7 +15,7 @@ export const actions = {
 		const id = data.get('id');
 		try {
 			const deletedNote = await Note.findByIdAndDelete(id);
-			throw redirect(303, '/');
 		} catch (error) {}
+		throw redirect(303, '/');
 	}
 };

@@ -9,11 +9,11 @@ export const actions = {
 			const content = data.get('content');
 			const note = new Note({ title, content });
 			const savedNote = await note.save();
-			throw redirect(303, '/');
 		} catch (error) {
 			if (error instanceof Response || error.status === 303) {
 				throw error;
 			}
 		}
+		throw redirect(303, '/');
 	}
 };
