@@ -1,7 +1,6 @@
 <script>
 	import { formatDate } from '$lib/utils/utils';
 	import { enhance } from '$app/forms';
-	import { redirect } from '@sveltejs/kit';
 
 	const handleDelete = ({ cancel }) => {
 		if (!confirm('Are you sure?')) {
